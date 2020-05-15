@@ -1,0 +1,18 @@
+<h1>Post#show</h1>
+<p>ID: <%= @post.id %></p>
+<p>タイトル: <%= @post.title %></p>
+<p>内容: <%= @post.content %></p>
+<p>ステータス: <%= @post.display_status %></p>
+
+<p>
+  <%= link_to "/posts/#{@post.id}/edit" do %>
+    <button>変更</button>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to '/posts' do %>
+    <button>一覧へ</button>
+  <% end %>
+</p>
+
