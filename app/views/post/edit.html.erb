@@ -1,0 +1,31 @@
+<h1>Post#add</h1>
+<p><%= @post.title %>の変更</p>
+<% if @post.errors.any? %>
+<ul>
+  <% @post.errors.full_message.each do |err| %>
+      <li><%= err %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<table>
+  <%= form_for(@post, url:{controller:'post', action:'edit', method: 'patch'}) do |form| %>
+
+  <tr><th>タイトル</th>
+      <td><%= form.text_field :title, value: @post.title %></td></tr>
+  <tr><th>内容</th>
+      <td><%= form.text_field :content, value: @post.content %></td></tr>
+  <tr><th>ステータス</th>
+      <td>
+        <%= form.select :status, [['公開', 1], ['非公開', 2]], { selected: @post.status ? @post.status : @post.unpublish_number} %>
+      </td></tr>
+  <tr><th></th>
+      <td><%= form.submit "更新" %></td></tr>
+  <% end %>
+</table>
+
+<p>
+  <%= link_to "/posts/#{@post.id}" do %>
+    <button>戻る</button>
+  <% end %>
+</p>
