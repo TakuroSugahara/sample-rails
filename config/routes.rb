@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
-  get 'hello/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'posts', to: 'post#index'
+  get 'posts/add', to:'post#add'
+  post 'posts/add', to:'post#add'
+  get 'posts/:id', to: 'post#show'
+  get 'posts/:id/edit', to:'post#edit'
+  patch 'posts/:id/edit', to:'post#edit'
 end
